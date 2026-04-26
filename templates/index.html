@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>YouTube Downloader</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
+
+  <main class="shell">
+    <header class="hero">
+      <div class="logo">
+        <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor" aria-hidden="true">
+          <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.6 12 3.6 12 3.6s-7.6 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.8.5 9.4.5 9.4.5s7.6 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/>
+        </svg>
+        <div>
+          <h1>YouTube Downloader</h1>
+          <p>حمّل قائمة فيديوهات بالجودة والمكان اللي يناسبك</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="card">
+      <div class="field">
+        <label for="urls">روابط الفيديوهات</label>
+        <span class="hint">رابط واحد في كل سطر</span>
+        <textarea id="urls" rows="6" placeholder="https://www.youtube.com/watch?v=...
+https://youtu.be/..."></textarea>
+      </div>
+
+      <div class="grid">
+        <div class="field">
+          <label for="quality">الجودة</label>
+          <div class="select-wrap">
+            <select id="quality">
+              <option value="best">الأفضل المتاح</option>
+              <option value="1080p">Full HD — 1080p</option>
+              <option value="720p" selected>HD — 720p</option>
+              <option value="480p">SD — 480p</option>
+              <option value="360p">منخفض — 360p</option>
+              <option value="audio">صوت فقط — MP3</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field folder-field">
+          <label for="folder">فولدر الحفظ</label>
+          <div class="folder-row">
+            <input id="folder" type="text" value="{{ default_folder }}" spellcheck="false" />
+            <button id="browseBtn" type="button" class="ghost-btn" title="استعراض">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+              استعراض
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button id="startBtn" class="primary-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m6 9 6 6 6-6"/><path d="M5 21h14"/></svg>
+          ابدأ التحميل
+        </button>
+        <span id="globalStatus" class="status-pill"></span>
+      </div>
+    </section>
+
+    <section id="results" class="results" hidden>
+      <h2>التقدم</h2>
+      <div id="resultsList" class="results-list"></div>
+    </section>
+
+    <footer class="foot">
+      <span>مدعوم بـ <code>yt-dlp</code> · واجهة محلية على جهازك</span>
+    </footer>
+  </main>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

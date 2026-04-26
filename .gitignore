@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# PyInstaller build artifacts
+build/
+dist/
+*.spec
+*.exe
+
+# FFmpeg binaries (download separately — too large for git)
+bin/ffmpeg.exe
+bin/ffprobe.exe
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local downloads (if any are placed inside the project)
+downloads/
